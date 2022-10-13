@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(0, 208, 255));
+}
+
+.btn {
+    background-image: linear-gradient(to right, rgba(219, 205, 205, 0), rgb(0, 217, 255));
+    border-color: transparent;
+}
+
+header h1 {
+    color: white;
+}
+
+label {
+    font-size: 25px;
+    color: black;
+    font-weight: 300;
+}
+
+.list-group h2 {
+    color: black;
+    font-size: 25px;
+    font-weight: 300;
+}
