@@ -6,12 +6,17 @@ var apiKey = "c496fa2625e14260e330242c92f78eb3";
 
 function formHandler(event) {   
     event.preventDefault();
-    storeSearch();
+    var input = inputEl.value;
+    
+    if (!input) {
+        alert("Please enter a valid city name in the search bar");
+        return;
+    }
+
+    storeSearch(input);
 }
 
-function storeSearch() {
-    var input = inputEl.value;
-
+function storeSearch(input) {
     localStorage.setItem("id=" + input, input);
 
     inputEl.textContent = "";
