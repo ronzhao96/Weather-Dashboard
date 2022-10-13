@@ -64,7 +64,7 @@ function displayData(data) {
     cardSub1.textContent = date;
     var cardSub2 = document.createElement("h3");
     cardSub2.classList = "card-subtitle mb-2 text-align-center";
-    cardSub2.textContent = "Min: " + tempMin + "F    " + temp + "F    " + "Max: " + tempMax + "F";
+    cardSub2.textContent = "Min: " + tempMin + "F         " + "Current: " + temp + "F         " + "Max: " + tempMax + "F";
     var cardSub3 = document.createElement("h3");
     cardSub3.classList = "card-subtitle mb-2 text-align-center";
     cardSub3.textContent = "Humidity: " + humidity;
