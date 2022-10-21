@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+.card-body {
+    font-family: Josefin Sans, sans-serif;
+    color: black;
+}
+
 body {
     background-image: url(./360_F_461232389_XCYvca9n9P437nm3FrCsEIapG4SrhufP.jpeg);
     background-attachment: fixed;
@@ -17,25 +22,10 @@ body {
 header h1 {
     color: white;
     font-size: 60px;
+    font-family: Josefin Sans, sans-serif;
+    font-weight: 700;
 }
 
-label {
-    font-size: 25px;
-    color: white;
-    font-weight: 300;
-}
-
-.list-group h2 {
-    color: white;
-    font-size: 25px;
-    font-weight: 300;
-}
-
-#search-container {
-    background-color: transparent;
-    border-color: transparent;
-}
-
-#search-container #searchCard {
-    color: white;
+.searchTitle {
+    font-size: 25px
 }

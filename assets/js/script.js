@@ -7,36 +7,58 @@ var apiKey = "c496fa2625e14260e330242c92f78eb3";
 function formHandler(event) {   
     event.preventDefault();
     var input = inputEl.value;
+    inputEl.textContent = "";
     
     if (!input) {
         alert("Please enter a valid city name in the search bar");
         return;
     }
 
-    storeSearch(input);
-}
+    localStorage.setItem("input", input);
 
-function storeSearch(input) {
-    localStorage.setItem("id=" + input, input);
 
-    inputEl.textContent = "";
+    if (localStorage.input0) {        
+        for (i = 0; i < 8; i++) {
+            if (localStorage.input + i == input) {
+                return;
+            }
+            else {
+                localStorage.setItem("input" + Number(i + 1), input);
+                return;
+            }
+        }
+    }
+    else {
+        localStorage.setItem("input0", input);
+    }
 
-    var searchHistoryContainer = document.createElement("div");
-    searchHistoryContainer.classList = "m-1 d-flex w-100 justify-content-center";
-    var searchHistoryName = document.createElement("button");
-    searchHistoryName.classList = "mb-2 font-weight-normal text-align-center btn-block";
-    searchHistoryName.setAttribute("id", "id=" + input);
-    searchHistoryName.setAttribute("onClick", "reply_click(this.id)");
-    
-    searchHistoryName.textContent = input;
-    
-    searchHistoryContainer.appendChild(searchHistoryName);
-    listEl.appendChild(searchHistoryContainer);
-
+    displaySaved();
     getWeather(input);
 }
 
+function displaySaved() {
+    for (i = 0; i < 8; i++) {
+        var name = localStorage.getItem("input" + i);
+        
+        var searchHistoryContainer = document.createElement("div");
+        searchHistoryContainer.classList = "savedCities m-1 d-flex w-100 justify-content-center";
+        var searchHistoryName = document.createElement("button");
+        searchHistoryName.classList = "mb-2 font-weight-normal text-align-center btn-block";
+        searchHistoryName.setAttribute("id", "id=" + input);
+        searchHistoryName.setAttribute("onClick", "reply_click(this.id)");
+        
+        searchHistoryName.textContent = name;
+        
+        searchHistoryContainer.appendChild(searchHistoryName);
+        listEl.appendChild(searchHistoryContainer);
+    }
+}
+
 function getWeather(city) {
+    if (localStorage.input) {
+        city = localStorage.getItem("input");
+    }
+    
     var apiURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
     
     fetch (apiURL)
@@ -52,7 +74,7 @@ function getWeather(city) {
 
 function displayData(data) {
     searchCard.textContent = "";
-    
+
     var name = data.name;
     var date = moment().format("MM/DD/YYYY");
     var temp = data.main.temp;
@@ -101,3 +123,5 @@ function reply_click(clicked_id) {
 }
 
 userFormEL.addEventListener("submit", formHandler);
+window.addEventListener("load", getWeather);
+//window.addEventListener("load", )
